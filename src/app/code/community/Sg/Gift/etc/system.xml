@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<config>
+    <tabs>
+        <sggiftconf>
+            <label>SwiftGift</label>
+            <sort_order>150</sort_order>
+        </sggiftconf>
+    </tabs>
+    <sections>
+        <secsggiftconf module="adminhtml">
+            <label>SwiftGift settings</label>
+            <tab>sggiftconf</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <label>General</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[SwiftGift API settings.]]></comment>
+                    <expanded>1</expanded>
+                    <fields>
+                        <sg_api_base_url translate="label comment">
+                            <label>SwiftGift API base url</label>
+                            <comment>Base URL for SwiftGift api</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sg_api_base_url>
+                        <user_email translate="label comment">
+                            <label>SwiftGift API user email</label>
+                            <comment>Email for authentication</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </user_email>
+                        <user_password translate="label comment">
+                            <label>SwiftGift API user password</label>
+                            <comment>Password for authentication</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </user_password>                        
+                        <magic_link_base_url translate="label comment">
+                            <label>Magic link base URL</label>
+                            <comment>Base URL for SwiftGift api</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magic_link_base_url>
+                        <sg_message_image_url>
+                            <label>Store logo image URL</label>
+                            <comment>Store logo image URL</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sg_message_image_url>
+                        <sender_image_url>
+                            <label>Sender image URL</label>
+                            <comment>Default sender image URL</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sender_image_url>
+                    </fields>
+                </general>
+            </groups>
+        </secsggiftconf>
+    </sections>
+</config>

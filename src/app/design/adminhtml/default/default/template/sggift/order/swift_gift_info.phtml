@@ -1,0 +1,6 @@
+<?php if ($this->getGift()) {?>
+    <h4>Order is using SwiftGift</h4>
+    <strong>Magic link:</strong> <a href="<?php echo $this->getGift()->getMagicLinkUrl() ?>"><?php echo $this->getGift()->getMagicLinkUrl() ?></a>
+<?php } else {?>
+    <span style="color: red;">Error: can't find gift for this order.</span>
+<?php } ?>

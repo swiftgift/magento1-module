@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>    
+    <adminhtml_sales_order_view>
+        <reference name="sales_order_tabs">
+            <block type="sggift/adminhtml_sales_order_view_tab_swiftgift" name="order_swiftgift" template="sggift/sales/order/view/tab/swiftgift.phtml" />
+            <action method="addTab"><name>order_swiftgift</name><block>order_swiftgift</block></action>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

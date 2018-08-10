@@ -1,0 +1,25 @@
+<?php
+$order = $this->getOrder();
+?>
+
+<h2>SwiftGift info</h2>
+
+<?php if ($order->getSwiftGiftUsed()) { ?>
+    <?php $gift = $this->getGift(); ?>
+    <?php if ($gift && $gift->getId()) { ?>
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label">Gift status</label></td>
+                <td class="value"><span style="<?php echo $gift->getStatus() === 'accepted' ? 'color: green;' : '' ?>"><?php echo $gift->getStatusRepr($gift->getStatus()); ?></span></td>
+            </tr>
+            <tr>
+                <td class="label">Magic link</td>
+                <td class="value">
+                    <a target="_blank" href="<?php echo $gift->getMagicLinkUrl(); ?>"><?php echo $gift->getMagicLinkUrl(); ?></a>
+                </td>
+            </tr>
+        </table>
+    <?php } else {?>
+        <span style="color: red;"><?php echo $this->__("Error: couldn't create SwiftGift for this order.") ?></span>
+    <?php } ?>
+<?php } ?>

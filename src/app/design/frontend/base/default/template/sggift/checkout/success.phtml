@@ -1,0 +1,5 @@
+<?php if ($this->getShowGift()) { ?>
+    <?php echo $this->getGiftHtml(); ?>
+<?php } else { ?>
+    <?php echo $this->getChildHtml('sggift_checkout_default') ?>
+<?php } ?>

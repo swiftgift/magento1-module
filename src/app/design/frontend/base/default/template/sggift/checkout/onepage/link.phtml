@@ -1,0 +1,3 @@
+<?php if ($this->canShow()) { ?>
+    <button type="button" title="Send as gift" class="button btn-proceed-checkout btn-checkout" onclick="window.location='<?php echo $this->getSwiftGiftCheckoutLink()?>';"><span><span>Send as gift</span></span></button>
+<?php } ?>

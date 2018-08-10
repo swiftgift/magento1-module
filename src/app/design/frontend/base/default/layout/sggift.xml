@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/swiftgift/app.css</stylesheet></action>
+        </reference>
+    </default>
+
+    <catalog_product_view>
+        <reference name="product.info.addtocart">
+            <block type="sggift/catalog_product_sendasgift_view" name="swift_gift_catalog_product_view" template="sggift/catalog/sendasgift/product_view.phtml" />
+        </reference>
+    </catalog_product_view>
+
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/swiftgift/sgopcheckout.js</name></action>
+        </reference>
+        <reference name="checkout.onepage">
+            <block name="checkout.onepage.shipping" as="shipping" type="sggift/checkout_onepage_shipping" template="sggift/checkout/onepage/swift_gift_shipping.phtml">
+                <block name="sg.checkout.onepage.shipping.default" type="checkout/onepage_shipping" template="checkout/onepage/shipping.phtml" />
+            </block>
+        </reference>        
+        <reference name="checkout.onepage.billing">
+            <action method="setTemplate"><template>checkout/onepage/billing.phtml</template></action>
+            <block type="sggift/checkout_onepage_sgvar" name="checkout.onepage.billing.extra" template="sggift/checkout/onepage/sgvar.phtml" />
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_success translate="label">
+        <reference name="content">
+            <remove name="checkout.success" />
+            <remove name="checkout.onepage.success" />
+            <block type="sggift/checkout_success" name="checkout_onepage_success" template="sggift/checkout/success.phtml">
+                <block type="checkout/onepage_success" template="checkout/success.phtml" name="sggift_checkout_default" />
+            </block>
+        </reference>
+    </checkout_onepage_success>
+
+    <checkout_cart_index>
+        <reference name="checkout.cart.top_methods">
+            <block type="sggift/checkout_onepage_link" name="sggift_checkout_btn_top" template="sggift/checkout/onepage/link.phtml" />
+        </reference>
+        <reference name="checkout.cart.methods">
+            <block type="sggift/checkout_onepage_link" name="sggift_checkout_btn_bottom" template="sggift/checkout/onepage/link.phtml" after="checkout.cart.methods.onepage.bottom" />
+        </reference>
+    </checkout_cart_index>
+    
+</layout>
