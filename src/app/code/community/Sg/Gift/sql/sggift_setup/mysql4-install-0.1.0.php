@@ -83,6 +83,7 @@ create table `{$installer->getTable('sggift/gift')}` (
        `status` varchar(50) not null,
        `status_change_time` datetime not null,
        `code` varchar(255) not null,
+       `share_url` varchar(255) not null,
        primary key (`entity_id`),
        foreign key (order_id) references `{$installer->getTable('sales/order')}` (entity_id)
 ) engine=InnoDB default charset=utf8 auto_increment=1;
