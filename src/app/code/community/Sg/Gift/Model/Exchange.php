@@ -31,6 +31,7 @@ class Sg_Gift_Model_Exchange {
     }
 
     public function handleSwiftGiftCallback($params, $post_data_raw) {
+        Mage::log("swiftgift:handlecb:start Raw data: " . $post_data_raw);
         $data = $this->getUpdateCallbackValidData($params, $post_data_raw);
         $data_params = $data['params'];
         $gift_data = $data['gift'];
@@ -38,6 +39,7 @@ class Sg_Gift_Model_Exchange {
             'code'=>$data_params['code'],
             'id'=>$data_params['id']
         ))) {
+            Mage::log("swiftgift:handlecb: protect code valid: " . $data_params['code']);
             $gift = Mage::getModel('sggift/gift')->load($data_params['id'], 'order_id');
             if (!$gift->getId()) {
                 throw new Sg_Gift_Exception("Cant load gift for order: '{$f_params->id}'");
@@ -46,14 +48,17 @@ class Sg_Gift_Model_Exchange {
             $conn = Mage::getSingleton('core/resource')->getConnection('core_write');
             $conn->beginTransaction();
 
-            try {
+            try {                
                 $this->updateGift($gift, $gift_data);
+                Mage::log("swiftgift:handlecb: updated gift: " . $gift->getId() . " with data: " . json_encode($gift_data));
             } catch (Exception $e) {
                 $conn->rollback();
+                Mage::log("swiftgift:handlecb: cant update gift. " . $gift->getId() . " with data: " . json_encode($gift_data));
                 throw $e;
             }
             $conn->commit();
         } else {
+            Mage::log("swiftgift:handlecb: protect code NOT valid: " . $data_params['code']);
             throw new Sg_Gift_Validation_Exception(
                 "Protect code not valid",
                 "swift_gift_update_cb_protect_code_invalid"
