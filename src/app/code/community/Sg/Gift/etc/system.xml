@@ -34,8 +34,8 @@
                             <show_in_store>1</show_in_store>
                         </sg_api_base_url>
                         <sg_api_client_secret translate="label comment">
-                            <label>SwiftGift API user email</label>
-                            <comment>Email for authentication</comment>
+                            <label>Secret key</label>
+                            <comment>To activate SwiftGift for this store, you need to register an account at b2b.swiftgift.me/registration and receive a Secret Key.</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>11</sort_order>
                             <show_in_default>1</show_in_default>
