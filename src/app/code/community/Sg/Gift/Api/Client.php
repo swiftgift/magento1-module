@@ -28,8 +28,8 @@ class Sg_Gift_Api_Client {
         $r_data = json_decode($r->getBody());
         Mage::log("swiftgift:client:auth:result: status:" . $r_status . ", Body: " . $r->getBody());
         if ($r_status === '200') {
-            $this->setAccessToken($r_data->auth->access_token);
-            Mage::log("swiftgift:client:auth:result: Set access token: " . $r_data->auth->access_token);
+            $this->setAccessToken($r_data->access_token);
+            Mage::log("swiftgift:client:auth:result: Set access token: " . $r_data->access_token);
         } else {
             throw new Sg_Gift_Api_Exception('unknown', $r_data);
         }
