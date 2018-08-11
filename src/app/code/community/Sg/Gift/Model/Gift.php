@@ -25,7 +25,7 @@ class Sg_Gift_Model_Gift extends Mage_Core_Model_Abstract {
     }
 
     public function getMagicLinkUrl() {
-        return Mage::helper('sggift')->getMagicLinkUrl($this->getCode());
+        return $this->getShareUrl();
     }
 
     public function handleCustomerAddressFormat($observer) {

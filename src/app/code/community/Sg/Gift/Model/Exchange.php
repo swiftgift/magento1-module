@@ -26,6 +26,7 @@ class Sg_Gift_Model_Exchange {
         $gift->setStatus($gift_result_data['status']);
         $gift->refreshStatusChangeTime();
         $gift->setCode($gift_result_data['code']);
+        $gift->setShareUrl($gift_result_data['share_url']);
         $gift->save();
         return $gift;
     }
