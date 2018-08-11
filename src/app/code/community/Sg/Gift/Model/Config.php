@@ -9,18 +9,13 @@ class Sg_Gift_Model_Config {
         return trim(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB), '/');
     }
 
-    public function getUserEmail() {
-        return Mage::getStoreConfig('secsggiftconf/general/user_email');
-    }
-
-    public function getUserPassword() {
-        return Mage::getStoreConfig('secsggiftconf/general/user_password');
+    public function getClientSecret() {
+        return Mage::getStoreConfig('secsggiftconf/general/sg_api_client_secret');
     }
 
     public function getSgApiCredentials() {
         return array(
-            'email'=>$this->getUserEmail(),
-            'password'=>$this->getUserPassword()
+            'client_secret'=>$this->getClientSecret()
         );
     }
     

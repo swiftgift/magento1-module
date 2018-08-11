@@ -104,7 +104,7 @@ class Sg_Gift_Model_Exchange {
             'sender'=> array(
                 "first_name"=> $quote->getSwiftGiftName(),
                 "last_name"=> 'None',
-                "image_url"=> $this->getConfig()->getSenderImageUrl(),
+                "image_url"=> null,
                 "email"=> $quote->getCustomerEmail(),
                 "phone_number"=> '',
                 'billing'=>array_intersect_key($order->getBillingAddress()->getData(), array_flip(array(
@@ -113,7 +113,7 @@ class Sg_Gift_Model_Exchange {
             ),
             "message"=> array(
                 "text"=> $quote->getSwiftGiftMessage(),
-                "image_url"=> $this->getConfig()->getDefaultMessageImageUrl()
+                "image_url"=> null
             ),
             "is_surprise"=> false,
             "products"=> array_map(array($this, 'getProductData'), $order->getAllItems()),
