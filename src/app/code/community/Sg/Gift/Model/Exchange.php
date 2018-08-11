@@ -16,7 +16,7 @@ class Sg_Gift_Model_Exchange {
         $gift_data = $this->makeGiftData($quote, $order);
         $order_id = $order->getId();
         $protect_code = $this->makeProtectCode(array('id'=>$order_id));
-        $gift_data['idempotency_key'] = md5("{$base_url}{$order_id}");
+        $gift_data['idempotency_key'] = $order->getProtectCode();
         $gift_data['callback_url'] = "{$base_url}/sggift/api/cb/id/{$order_id}/code/{$protect_code}";
         $gift_result_data = $this->getCreateGiftValidData(
             (array)$client->createGift($gift_data)
