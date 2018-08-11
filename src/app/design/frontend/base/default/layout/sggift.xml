@@ -11,6 +11,9 @@
         <reference name="product.info.addtocart">
             <block type="sggift/catalog_product_sendasgift_view" name="swift_gift_catalog_product_view" template="sggift/catalog/sendasgift/product_view.phtml" />
         </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="sg-add-to-cart-js" template="sggift/catalog/sendasgift/sg-add-to-cart-js.phtml" />
+        </reference>
     </catalog_product_view>
 
     <checkout_onepage_index>
@@ -29,6 +32,10 @@
     </checkout_onepage_index>
 
     <checkout_onepage_success translate="label">
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/swiftgift/lib/clipboard.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/swiftgift/checkout-success.js</name></action>
+        </reference>        
         <reference name="content">
             <remove name="checkout.success" />
             <remove name="checkout.onepage.success" />

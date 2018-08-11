@@ -31,7 +31,8 @@ class SG_Gift_OnepageController extends Mage_Checkout_OnepageController {
                     'message'=>$errors
                 );
             }
-            $this->_prepareDataJSON($result);
+						$this->getResponse()->setHeader('Content-type', 'application/json', true);
+						$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
         }
     }
 
@@ -39,5 +40,5 @@ class SG_Gift_OnepageController extends Mage_Checkout_OnepageController {
         $this->getOnepage()->getQuote()->setSwiftGiftUsed(false)->save();
         return parent::saveShippingAction();
     }
-
+		
 }

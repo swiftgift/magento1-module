@@ -42,15 +42,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sg_api_client_secret>
-                        <magic_link_base_url translate="label comment">
-                            <label>Magic link base URL</label>
-                            <comment>Base URL for SwiftGift api</comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>12</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </magic_link_base_url>
                     </fields>
                 </general>
             </groups>

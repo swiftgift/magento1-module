@@ -1,6 +1,12 @@
 <?php
 class Sg_Gift_Model_Checkout {
 
+    public function handleCartAddProductComplete($observer) {
+        // $data = $observer->getEvent()->getData();
+        // $r = $data['request'];
+        // $r->setParam('return_url', '/');
+    }
+
     public function handlerAfterSaveBilling($observer) {
         $data = $observer->getEvent()->getData();
         $controller = $data['controller_action']; 
@@ -93,6 +99,10 @@ class Sg_Gift_Model_Checkout {
 
 
     public function setQuoteGiftData($quote, $data) {
+        $conf = $this->getConfig();
+        if (!$conf->isFilled()) {
+            return array('Swift gift settings is not valid. Please change swift gift settings in admin panel.');
+        }
         try {
             $data = $this->getCheckoutValidData(
                 $this->getAvailableCountriesCodes(),
@@ -121,17 +131,18 @@ class Sg_Gift_Model_Checkout {
     public function getCheckoutValidData($available_countries_codes, $data) {
         $f = new Zend_Filter_Input(array(), array(
             'name'=>array(
-                array('NotEmpty'),
                 array('StringLength', array(
                     'min'=>0,
                     'max'=>255
-                ))
+                )),
+                'allowEmpty'=>true
             ),
             'message'=>array(
                 array('StringLength', array(
                     'min'=>0,
                     'max'=>400
-                ))
+                )),
+                'allowEmpty'=>true
             )
         ), $data, array(Zend_Filter_Input::PRESENCE=>Zend_Filter_Input::PRESENCE_REQUIRED));
         if (!$f->isValid()) {

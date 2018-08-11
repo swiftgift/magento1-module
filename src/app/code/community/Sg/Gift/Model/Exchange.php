@@ -104,7 +104,7 @@ class Sg_Gift_Model_Exchange {
         $gift_data = array(
             'sender'=> array(
                 "first_name"=> $quote->getSwiftGiftName(),
-                "last_name"=> 'None',
+                "last_name"=> null,
                 "image_url"=> null,
                 "email"=> $quote->getCustomerEmail(),
                 "phone_number"=> '',
@@ -117,11 +117,11 @@ class Sg_Gift_Model_Exchange {
                 "image_url"=> null
             ),
             "is_surprise"=> false,
-            "products"=> array_map(array($this, 'getProductData'), $order->getAllItems()),
+            "products"=> array_map(array($this, 'getProductData'), $order->getAllVisibleItems()),
             "basket_amount"=> $order->getGrandTotal(),
             "currency"=> $order->getGlobalCurrencyCode(),
             "delivery"=> array(
-                "country"=> $quote->getSwiftGiftCountryCode(),
+                "country"=> $quote->getShippingAddress()->getCountryId(),
                 "name"=> "DHL Standard Delivery",
                 "min_time"=> 1,
                 "max_time"=> 2
@@ -133,7 +133,7 @@ class Sg_Gift_Model_Exchange {
     public function getProductData($item) {
         return array(
             "name"=>$item->getProduct()->getName(),
-            "image_url"=>$item->getProduct()->getImageUrl()
+            "image_url"=>$item->getProduct()->getSmallImageUrl()
         );
     }
 
@@ -143,7 +143,6 @@ class Sg_Gift_Model_Exchange {
     }
 
     public function protectCodeIsValid($data) {
-        return true;
         return $this->makeProtectCode($data) === $data['code'];
     }
 
@@ -155,7 +154,10 @@ class Sg_Gift_Model_Exchange {
             ),
             'code'=>array(
                 array('NotEmpty')
-            )
+            ),
+            'share_url'=>array(
+                array('NotEmpty')
+            )            
         ), $data, array(Zend_Filter_Input::PRESENCE=>Zend_Filter_Input::PRESENCE_REQUIRED));
         if (!$f->isValid()) {
             throw new Sg_Gift_Validation_Exception(

@@ -9,6 +9,10 @@ class Sg_Gift_Model_Config {
         return trim(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB), '/');
     }
 
+    public function isFilled() {
+        return $this->getSgApiBaseUrl() && $this->getClientSecret();
+    }
+
     public function getClientSecret() {
         return Mage::getStoreConfig('secsggiftconf/general/sg_api_client_secret');
     }

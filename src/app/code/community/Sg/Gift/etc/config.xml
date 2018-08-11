@@ -5,12 +5,6 @@
         <secsggiftconf>
             <general>
                 <sg_api_base_url>https://api.swiftgift.me/</sg_api_base_url>
-                <sg_api_client_id>clientid</sg_api_client_id>
-                <sg_message_image_url>skin/frontend/rwd/default/images/logo.gif</sg_message_image_url>
-                <user_email>testusertwo@email.com</user_email>
-                <user_password>testusertwo@email.com</user_password>
-                <sender_image_url>//cdn-staging.swiftgift.me/images/users/8c/2baa6eda270623f03c4d8d44bec9d2.jpg</sender_image_url>
-                <magic_link_base_url>https://swiftgift.me/</magic_link_base_url>
             </general>
         </secsggiftconf>
     </default>
@@ -45,6 +39,16 @@
     <global>
 
         <events>
+
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <sg_gift_handleCartAddProductComplete>
+                        <class>sggift/checkout</class>
+                        <type>singleton</type>
+                        <method>handleCartAddProductComplete</method>
+                    </sg_gift_handleCartAddProductComplete>
+                </observers>
+            </checkout_cart_add_product_complete>
 
             <customer_address_format>
                 <observers>

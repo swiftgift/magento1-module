@@ -4,7 +4,7 @@ class Sg_Gift_Helper_Data extends Mage_Core_Helper_Abstract {
     public function getSendAsGiftUrl($product) {
         $base_url = Mage::app()->getStore()->getBaseUrl();
         $url = "{$base_url}checkout/onepage/?sg=1";
-        return Mage::helper('checkout/cart')->getAddUrl($product, array()) . "?return_url={$url}";
+        return Mage::helper('checkout/cart')->getAddUrl($product, array());
     }
 
     public function getMagicLinkUrl($code) {

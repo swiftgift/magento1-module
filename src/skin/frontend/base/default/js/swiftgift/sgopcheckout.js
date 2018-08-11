@@ -87,6 +87,12 @@
                                             }
                                         }
                                     );
+                                } else {
+                                    if (response.message && response.message.length > 0) {
+                                        for (var i=0; i<response.message.length; i++) {
+                                            alert(response.message[i]);
+                                        }
+                                    }
                                 }
                             },
                             onFailure: checkout.ajaxFailure.bind(checkout),
