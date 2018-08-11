@@ -18,7 +18,7 @@ class Sg_Gift_Api_Client {
 
     public function authenticate($credentials) {
         Mage::log("swiftgift:client:auth:start: With credentials: " . json_encode($credentials));
-        $login_url = '/v1/users/login';
+        $login_url = '/v1/auth';
         $c = new Zend_Rest_Client($this->base_url);
         $r = $c->restPost(
             $login_url,
